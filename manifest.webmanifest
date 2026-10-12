@@ -1,0 +1,11 @@
+{
+  "name": "Laba Nice Day Public Demo",
+  "short_name": "Laba Nice Day",
+  "description": "Public browser-only demo of the Laba Nice Day laundry operations system.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4fbff",
+  "theme_color": "#0b84b8",
+  "icons": []
+}
