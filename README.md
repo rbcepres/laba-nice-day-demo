@@ -357,3 +357,17 @@ while keeping the attendant workflow simple and fast.
 - Fresh installation and Reset Demo Data now use one canonical demo-state initializer.
 - Repair Installation validates the actual collections used by the UI and reports what it restored.
 - The machine seed always restores W1-W3 and D1-D3 with the configured Haier models and 9kg shop operating limit.
+
+## Demo v16.4.5 stabilization
+
+- Inventory products now use one canonical product catalog shared by New Order and Inventory.
+- Inventory repair/reset state is persisted and validated so it survives refresh.
+- Fresh/reset demo data includes realistic detergent, fabric conditioner, dispensing-container, and laundry-bag stock.
+- Empty screens show explicit messages such as “No released transactions” or “No machines configured” instead of appearing blank.
+
+## Demo v16.4.5 stabilization
+
+- Inventory products use one canonical product catalog shared by New Order and Inventory.
+- Inventory created by reset or Repair Installation is persisted and checked so it survives refresh.
+- Fresh/reset demo data includes realistic detergent, fabric conditioner, dispensing-container, and laundry-bag stock.
+- Empty screens show explicit messages such as “No released transactions” and “No machines configured” instead of appearing blank.
