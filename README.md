@@ -161,19 +161,6 @@ before development of the production system.
 -   Support categories such as towels, sheets, curtains, and other
     establishment laundry.
 
-
-## 🏷️ Physical Load Labels & Printing
-
-- Give each physical load a short A/B/C-style label within its transaction, such as `#1054-A`.
-- Show the service type prominently with the load label throughout Operations and Transactions.
-- Add optional physical notes such as White Clothes, Bedsheets, or Towels.
-- Review and label multiple physical loads before machine assignment.
-- Assign Wash-first and Dry-first loads together when a mixed-service transaction is created.
-- Print customer receipts through the browser print dialog.
-- Print one load label or all load labels for a transaction.
-- Configure 58mm or 80mm print layouts.
-- Keep the print templates independent from printer transport so Bluetooth, USB, LAN, or server printing can be added later.
-
 ## 🚚 Pickup & Delivery
 
 -   Support customer drop-off, shop pickup, customer collection, and
@@ -326,3 +313,19 @@ while keeping the attendant workflow simple and fast.
 
 **Developed by:** Ronald Cepres\
 **Email:** rbcepres@gmail.com
+
+
+## 👤 Access hierarchy and customer data
+
+- **System Administrator** has full technical and business access, including backup restore and system-level user management.
+- **Owner** has broad business-control permissions without dangerous system-administration functions.
+- **Manager** is available for delegated shop management but is not created by default in the demo.
+- **Attendant** focuses on daily operations. Address changes can be saved directly; customer name/contact changes require Manager, Owner or Sys Admin approval.
+- Historical transactions keep a customer identity snapshot so later customer-profile edits do not rewrite what was recorded at transaction time.
+- Upgrade logic keeps a pre-migration safety copy and checks other Laba Nice Day browser-storage records before accepting an unexpectedly empty state.
+
+### Default demo accounts
+
+- Demo Sys Admin User — PIN `0987`
+- Demo Owner User — PIN `5678`
+- Demo Attendant User — PIN `1234`
