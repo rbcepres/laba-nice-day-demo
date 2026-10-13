@@ -257,6 +257,14 @@ The current demo is browser-based.
 -   The browser prototype is intended for workflow testing and
     validation, not as the final production database.
 
+
+### Demo Reset & Fresh Installation
+
+- Fresh installations automatically validate that core services, customers, machines and inventory exist.
+- **Reset Demo Data** now creates a canonical fresh demo state directly instead of passing through legacy recovery logic.
+- If the service catalog is incomplete, the demo restores the default service catalog before rendering New Order.
+- **Repair Installation** also checks that actual load-producing services exist, not merely that a catalog array is present.
+
 ## 🌐 Demo
 
 The current demo is available through GitHub Pages:
