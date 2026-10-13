@@ -22,6 +22,8 @@ before development of the production system.
 -   Require Owner/Admin approval for discounts, cancellations, and
     amendments.
 -   Keep an audit trail instead of deleting transaction history.
+-   Show concise load progress such as Washed, Waiting for Dryer,
+    Drying, Waiting for Folding, and Ready.
 
 ## 🧺 Load Management
 
@@ -46,6 +48,8 @@ before development of the production system.
 -   Support customer-provided detergent or fabric conditioner.
 -   Avoid deducting shop inventory when the customer provides the
     product.
+-   Demo inventory includes familiar product examples from brands such
+    as Ariel, Breeze, Surf, Downy, and Del.
 
 ## 📦 Inventory Management
 
@@ -160,12 +164,27 @@ before development of the production system.
 
 -   Maintain a detailed audit history of important actions.
 -   Track transaction creation, payments, amendments, cancellations,
-    discounts, machine actions, inventory changes, and consumable
-    overrides.
+    discounts, machine actions, inventory changes, consumable overrides,
+    and data repairs.
 -   Require Owner/Admin approval or passcode for controlled actions.
 -   Keep historical actions instead of silently overwriting or deleting
     records.
 -   Export audit history to CSV.
+
+## 🛠️ Data Integrity & Recovery
+
+-   Automatically reconcile load status with Wash, Dry, and Folding
+    queues.
+-   Repair missing queue entries when a waiting load is found outside
+    its expected queue.
+-   Remove stale or duplicate queue references where they can be safely
+    resolved.
+-   Validate and reconcile data after restoring older backups.
+-   Use previous stage progress when repairing older load records.
+-   Detect conflicting machine assignments and flag them for Owner
+    attention instead of silently guessing.
+-   Provide **Check & Repair Data** for manual integrity checks.
+-   Record automatic repairs and integrity warnings in the audit log.
 
 ## 📊 Owner Dashboard & Reports
 
@@ -185,6 +204,8 @@ The current public demo is browser-based.
 -   Data is **not synchronized between devices**.
 -   Different testers have independent demo data.
 -   Application data can be exported and restored using backups.
+-   Restored data is validated and reconciled before normal operations
+    continue.
 -   The browser prototype is intended for workflow testing and
     validation, not as the final production database.
 
