@@ -344,3 +344,16 @@ while keeping the attendant workflow simple and fast.
 - A fresh reset restores the default customers, services, machines, realistic demo inventory, and demo user accounts while leaving transactions and queues empty.
 - **Repair Installation** can restore required seed data if an incomplete browser state is detected.
 - Normal upgrades still preserve and migrate existing browser data; intentional reset is handled separately so recovery logic cannot re-load a broken empty state.
+
+### v16.4.4 initialization reliability
+
+- Fresh installs and Reset Demo Data use one canonical demo-state initializer.
+- Repair Installation validates the actual service, machine, customer, inventory and user collections used by the UI.
+- Repair Installation reports the components it restored instead of silently completing.
+- Default machine seed contains W1-W3 and D1-D3 with the configured Haier specifications and 9kg shop operating limit.
+
+### v16.4.4 installation reliability
+
+- Fresh installation and Reset Demo Data now use one canonical demo-state initializer.
+- Repair Installation validates the actual collections used by the UI and reports what it restored.
+- The machine seed always restores W1-W3 and D1-D3 with the configured Haier models and 9kg shop operating limit.
