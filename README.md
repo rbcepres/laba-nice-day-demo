@@ -112,6 +112,23 @@ before development of the production system.
 -   Allow staff to work either from the load queue or from an available
     machine.
 
+
+## 🏭 Actual Machine Configuration
+
+- Default washers are Haier HCW12CS professional washers.
+- Default dryers are Haier HCD12GS gas dryers configured for LPG operation.
+- Manufacturer-rated machine capacity is 12 kg.
+- Laba Nice Day uses a 9 kg operational maximum per physical load to reduce machine stress.
+- A 10 kg Standard Full Service order is therefore split into two physical loads rather than loading 10 kg into one machine.
+- Machine configuration keeps rated capacity separate from the shop operational maximum.
+
+## 🔒 Demo Sharing & Security
+
+- The demo contains no production database credentials or API secrets.
+- Real payment QR codes and real customer records must not be committed to the public demo.
+- Protected actions use the configured Owner/Admin demo accounts rather than separate hard-coded approval PINs.
+- Each release is reviewed for accidental sensitive information before sharing.
+
 ## ⏱️ Queues & Shop Workflow
 
 -   Maintain separate Wash, Dry, and Folding queues.
@@ -143,6 +160,19 @@ before development of the production system.
     customer transaction.
 -   Support categories such as towels, sheets, curtains, and other
     establishment laundry.
+
+
+## 🏷️ Physical Load Labels & Printing
+
+- Give each physical load a short A/B/C-style label within its transaction, such as `#1054-A`.
+- Show the service type prominently with the load label throughout Operations and Transactions.
+- Add optional physical notes such as White Clothes, Bedsheets, or Towels.
+- Review and label multiple physical loads before machine assignment.
+- Assign Wash-first and Dry-first loads together when a mixed-service transaction is created.
+- Print customer receipts through the browser print dialog.
+- Print one load label or all load labels for a transaction.
+- Configure 58mm or 80mm print layouts.
+- Keep the print templates independent from printer transport so Bluetooth, USB, LAN, or server printing can be added later.
 
 ## 🚚 Pickup & Delivery
 
