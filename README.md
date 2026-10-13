@@ -9,6 +9,9 @@ before development of the production system.
 
 ## 🧾 Orders & Transactions
 
+- Track transaction duration from order creation through release.
+- Show live duration for active transactions and final duration for released transactions.
+
 -   Create orders for walk-in and returning customers.
 -   Save customer name, contact number, address, and transaction
     history.
@@ -51,6 +54,16 @@ before development of the production system.
 -   Demo inventory includes familiar product examples from brands such
     as Ariel, Breeze, Surf, Downy, and Del.
 
+## 👤 Inventory Permissions & Product Lifecycle
+
+- Attendants can view inventory and receive stock.
+- Inventory adjustments require Owner/Admin access.
+- Owner/Admin can rename inventory products without breaking their historical ID.
+- Products with zero stock can be archived so they no longer appear in new-order supply choices.
+- Archived products remain available in historical records and can be restored.
+- Permanent deletion is limited to unused products with zero stock and no inventory movements, container assignment, or default-product reference.
+- Product rename, archive, restore, delete, receive, and adjustment actions are audited.
+
 ## 📦 Inventory Management
 
 -   Track different detergent and fabric conditioner products.
@@ -86,6 +99,8 @@ before development of the production system.
     history.
 
 ## 🧼 Machine Operations
+
+- Include overdue running machines in the Operations attention badge and update it live.
 
 -   Configure washers and dryers individually.
 -   Track machine availability and current loads.
@@ -165,8 +180,8 @@ before development of the production system.
 
 - Sign in with a local user and PIN.
 - Demo Attendant User — PIN `1234`.
-- Demo Admin User — PIN `113435`.
-- Demo Owner User — PIN `101026`.
+- Demo Admin User — PIN `0987`.
+- Demo Owner User — PIN `5678`.
 - Demo roles include Owner, Admin, and Attendant.
 - Owner can create, edit, activate, and deactivate demo users.
 - Roles use permission bundles to control access to configuration, audit logs, reports, approvals, and normal shop operations.
