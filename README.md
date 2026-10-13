@@ -391,3 +391,12 @@ The browser demo intentionally uses a simpler, deterministic state model.
 - Export a backup before installing a new demo version if the current test data matters.
 
 This simplified approach keeps the prototype predictable. The production PostgreSQL application will use explicit database migrations and stronger transactional integrity.
+
+## Demo v16.5.2 regression recovery
+
+- Restored browser-based receipt printing and physical load-label printing from active transactions.
+- Restored Print Load Label and Print All Load Labels actions with human-friendly `#transaction-letter` labels.
+- Restored 58mm / 80mm print-width settings; automatic printing remains off by default.
+- Confirmed Users & Access, user creation/editing/activation, role permissions, user switching, device lock, and shift controls remain present and permission-gated to the appropriate roles.
+- Improved machine-card hierarchy so machine ID and the 9kg shop operating maximum cannot visually merge.
+- Preserved the simplified browser-state architecture and v16.5.1 Inventory authentication/render timing fix.
