@@ -164,6 +164,9 @@ before development of the production system.
 ## 👤 Users, Roles & Access
 
 - Sign in with a local user and PIN.
+- Demo Attendant User — PIN `1234`.
+- Demo Admin User — PIN `113435`.
+- Demo Owner User — PIN `101026`.
 - Demo roles include Owner, Admin, and Attendant.
 - Owner can create, edit, activate, and deactivate demo users.
 - Roles use permission bundles to control access to configuration, audit logs, reports, approvals, and normal shop operations.
