@@ -160,6 +160,20 @@ before development of the production system.
 -   Allow Owner/Admin customer editing.
 -   Record customer information changes in the audit trail.
 
+
+## 👤 Users, Roles & Access
+
+- Sign in with a local user and PIN.
+- Demo roles include Owner, Admin, and Attendant.
+- Owner can create, edit, activate, and deactivate demo users.
+- Roles use permission bundles to control access to configuration, audit logs, reports, approvals, and normal shop operations.
+- Owner/Admin PIN approval can be used for controlled actions such as discounts and transaction changes.
+- Audit records identify the signed-in user and can record a separate approver.
+- Quickly switch users, lock the shared device, or end the current shift.
+- Track a lightweight local shift start/end for each signed-in user.
+
+> Demo authentication is browser-local and is intended to validate workflow and permissions. It is not production security and is not synchronized between devices.
+
 ## 🔐 Controls & Audit Trail
 
 -   Maintain a detailed audit history of important actions.
