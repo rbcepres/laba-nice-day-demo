@@ -378,3 +378,16 @@ while keeping the attendant workflow simple and fast.
 - Inventory, New Order supply selectors, and Configuration use the same inventory product catalog.
 - The Inventory screen renders the canonical Stock, Containers, and Movements panels rather than the retired legacy inventory list.
 - Android release ZIPs include a `.nomedia` marker so extracted launcher icons are not normally indexed by Gallery.
+
+## Demo State & Upgrades
+
+The browser demo intentionally uses a simpler, deterministic state model.
+
+- Current demo data is stored under one browser storage record.
+- Normal startup loads that record directly instead of searching historical storage copies.
+- Reset Demo Data creates one complete known-good demo state.
+- Check & Repair Data is limited to operational consistency such as queue membership and machine assignments.
+- Core collections such as Services, Customers, Machines, Users and Inventory are not silently reconstructed during normal startup.
+- Export a backup before installing a new demo version if the current test data matters.
+
+This simplified approach keeps the prototype predictable. The production PostgreSQL application will use explicit database migrations and stronger transactional integrity.
