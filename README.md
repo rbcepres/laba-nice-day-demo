@@ -173,18 +173,17 @@ before development of the production system.
 
 ## 🛠️ Data Integrity & Recovery
 
--   Automatically reconcile load status with Wash, Dry, and Folding
-    queues.
--   Repair missing queue entries when a waiting load is found outside
-    its expected queue.
--   Remove stale or duplicate queue references where they can be safely
-    resolved.
--   Validate and reconcile data after restoring older backups.
--   Use previous stage progress when repairing older load records.
--   Detect conflicting machine assignments and flag them for Owner
-    attention instead of silently guessing.
--   Provide **Check & Repair Data** for manual integrity checks.
--   Record automatic repairs and integrity warnings in the audit log.
+- Automatically reconcile load status with Wash, Dry, and Folding queues.
+- Repair missing queue entries when a waiting load is found outside its expected queue.
+- Continue a load directly from Transactions when it needs the next machine or folding step.
+- Automatically send a completed wash load to the Dry Queue when no dryer is available.
+- Show a non-blocking toast instead of an assignment popup when there is no compatible machine to choose.
+- Allow Owner/Admin to correct physical load progress with **Repair / Set Load Progress**.
+- Require an Owner/Admin passcode and reason for manual progress corrections.
+- Record manual corrections and automatic repairs in the audit log.
+- Detect conflicting machine assignments and flag them for Owner attention instead of silently guessing.
+- Provide **Check & Repair Data** for manual integrity checks.
+- Validate and reconcile data after restoring older backups.
 
 ## 📊 Owner Dashboard & Reports
 
