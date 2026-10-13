@@ -3,7 +3,7 @@
 A browser-based laundry shop management system designed around the
 actual day-to-day workflow of **Laba Nice Day**.
 
-The project currently serves as a functional public demo and prototype
+The project currently serves as a functional demo and prototype
 for testing shop operations, refining workflows, and gathering feedback
 before development of the production system.
 
@@ -141,14 +141,14 @@ before development of the production system.
 
 ## 💳 GCash Workflow
 
--   Support a simulated GCash payment workflow in the public demo.
+-   Support a simulated GCash payment workflow in the demo.
 -   Record GCash reference numbers.
 -   Capture/upload payment proof.
 -   Compress payment images before browser storage.
 -   Remind staff to verify that payment was actually received.
 -   Do not treat screenshots alone as proof of successful payment.
 
-> The public GitHub demo uses a fake payment QR and must not be used for
+> The GitHub demo uses a fake payment QR and must not be used for
 > real payments.
 
 ## 👥 Customers
@@ -197,7 +197,7 @@ before development of the production system.
 
 ## 💾 Browser Storage & Backups
 
-The current public demo is browser-based.
+The current demo is browser-based.
 
 -   Data is stored locally on each tester's device.
 -   Data is **not synchronized between devices**.
@@ -208,7 +208,7 @@ The current public demo is browser-based.
 -   The browser prototype is intended for workflow testing and
     validation, not as the final production database.
 
-## 🌐 Public Demo
+## 🌐 Demo
 
 The current demo is available through GitHub Pages:
 
@@ -226,7 +226,7 @@ modern browser.
 -   Machine activity is currently entered manually.
 -   ESP32-based physical machine monitoring is planned for a later
     stage.
--   The public demo should not contain real customer or payment
+-   The demo should not contain real customer or payment
     information.
 
 ## 🚧 Planned Production Architecture

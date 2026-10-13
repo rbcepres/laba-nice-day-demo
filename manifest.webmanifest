@@ -1,5 +1,5 @@
 {
-  "name": "Laba Nice Day Public Demo",
+  "name": "Laba Nice Day Demo",
   "short_name": "Laba Nice Day",
   "start_url": "./",
   "scope": "./",
@@ -7,7 +7,23 @@
   "background_color": "#f4f8fb",
   "theme_color": "#0d78b5",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
   ]
 }
