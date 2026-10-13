@@ -400,3 +400,13 @@ This simplified approach keeps the prototype predictable. The production Postgre
 - Confirmed Users & Access, user creation/editing/activation, role permissions, user switching, device lock, and shift controls remain present and permission-gated to the appropriate roles.
 - Improved machine-card hierarchy so machine ID and the 9kg shop operating maximum cannot visually merge.
 - Preserved the simplified browser-state architecture and v16.5.1 Inventory authentication/render timing fix.
+
+## Demo v16.5.3 workflow stabilization
+
+- Fixes System Administrator user editing and refreshes role/permission UI after changes.
+- Machine Assignment is load-driven and can present eligible washer and dryer loads together.
+- Auto-fill spans mixed machine types, preserves manual choices, remains reviewable, and yields primary emphasis to Confirm once no more assignments are available.
+- Machine Assignment shows machine IDs without capacity text.
+- Available Operations machine cards make the waiting-load assignment action more prominent.
+- Clarifies transaction classification as Customer Type, Order Mode, Received Via, and Return Via.
+- Wash-service supply selection is derived from configurable service workflow/consumption settings and supports apply-to-all plus per-load overrides for multiple same-service loads.
