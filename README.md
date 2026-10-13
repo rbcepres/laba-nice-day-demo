@@ -329,3 +329,10 @@ while keeping the attendant workflow simple and fast.
 - Demo Sys Admin User — PIN `0987`
 - Demo Owner User — PIN `5678`
 - Demo Attendant User — PIN `1234`
+
+## Demo reset and installation repair
+
+- **Reset Demo Data** now creates a deterministic fresh demo installation and deliberately bypasses legacy recovery data.
+- A fresh reset restores the default customers, services, machines, realistic demo inventory, and demo user accounts while leaving transactions and queues empty.
+- **Repair Installation** can restore required seed data if an incomplete browser state is detected.
+- Normal upgrades still preserve and migrate existing browser data; intentional reset is handled separately so recovery logic cannot re-load a broken empty state.
