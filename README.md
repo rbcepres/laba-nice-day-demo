@@ -1,412 +1,72 @@
-# Laba Nice Day Laundry Management System
+# Laba Nice Day — Demo
 
-A browser-based laundry shop management system designed around the
-actual day-to-day workflow of **Laba Nice Day**.
+Browser-based workflow prototype for the Laba Nice Day laundry management system. The Demo validates real shop operations before the production React/FastAPI/PostgreSQL application is built.
 
-The project currently serves as a functional demo and prototype
-for testing shop operations, refining workflows, and gathering feedback
-before development of the production system.
+## Core workflow
 
-## 🧾 Orders & Transactions
+Customer → Transaction → Physical Loads → Wash / Dry / Fold → Payment → Release
 
-- Track transaction duration from order creation through release.
-- Show live duration for active transactions and final duration for released transactions.
+Physical loads are independent operational units. A transaction may contain multiple loads and mixed service types. Human-friendly labels such as `#1054-A` are used for physical identification, while service type and optional load notes remain visible in operational views.
 
--   Create orders for walk-in and returning customers.
--   Save customer name, contact number, address, and transaction
-    history.
--   Support multiple services and multiple physical laundry loads in one
-    transaction.
--   Track Cash and GCash payments separately.
--   Show detailed charge and payment breakdowns.
--   Add charges such as Extra Dry after the original transaction.
--   Prevent release when there is an unpaid balance.
--   Support controlled transaction cancellation and amendment.
--   Require Owner/Admin approval for discounts, cancellations, and
-    amendments.
--   Keep an audit trail instead of deleting transaction history.
--   Show concise load progress such as Washed, Waiting for Dryer,
-    Drying, Waiting for Folding, and Ready.
+## Current capabilities
 
-## 🧺 Load Management
+- Customer and transaction creation, including Regular/Establishment and Standard/Bulk classifications.
+- Drop-off, shop pickup, customer pickup, and shop delivery workflows.
+- Configurable services, pricing, wash-service supply requirements, and consumable quantities.
+- Mixed-service load handling with washer and dryer assignment in one assignment flow.
+- Auto-fill machine assignment with manual review and queue fallback.
+- Wash, Dry, and Folding queues; priority marking; machine timers; Extra Rinse and Extra Dry.
+- Inventory products, containers, stock receipt, movements, adjustments, alerts, and per-load consumable selection.
+- Cash and simulated GCash payment workflows.
+- Receipt and physical load-label print preview with 58mm and 80mm paper settings.
+- Users & Access with System Administrator, Owner, Manager, and Attendant roles.
+- Audit logging, browser backup/restore, CSV exports, deterministic Demo reset, and operational data reconciliation.
 
--   Treat each physical laundry load separately from the customer
-    transaction.
--   One transaction can contain several loads.
--   Track each load through Washing, Drying, Folding, and Ready for
-    Release.
--   Assign individual loads to washers and dryers.
--   Automatically queue loads when no compatible machine is available.
--   Mark selected queued loads as Priority without changing their
-    visible queue order.
--   Process multiple loads efficiently using batch machine assignment.
--   Prevent the same machine from being assigned to two loads at once.
-
-## 🫧 Detergent & Fabric Conditioner
-
--   Select the detergent and fabric conditioner used for each load.
--   Set default products for faster order entry.
--   Apply the same supplies to several loads at once.
--   Override supplies for individual loads when needed.
--   Support customer-provided detergent or fabric conditioner.
--   Avoid deducting shop inventory when the customer provides the
-    product.
--   Demo inventory includes familiar product examples from brands such
-    as Ariel, Breeze, Surf, Downy, and Del.
-
-## 👤 Inventory Permissions & Product Lifecycle
-
-- Attendants can view inventory and receive stock.
-- Inventory adjustments require Owner/Admin access.
-- Owner/Admin can rename inventory products without breaking their historical ID.
-- Products with zero stock can be archived so they no longer appear in new-order supply choices.
-- Archived products remain available in historical records and can be restored.
-- Permanent deletion is limited to unused products with zero stock and no inventory movements, container assignment, or default-product reference.
-- Product rename, archive, restore, delete, receive, and adjustment actions are audited.
-
-## 📦 Inventory Management
-
--   Track different detergent and fabric conditioner products.
--   Track liquid inventory in mL.
--   Track laundry bags by piece.
--   Receive stock using different package sizes such as bottles and
-    pouches.
--   Track unopened stock, opened stock, and supplies transferred to
-    dispensers.
--   Maintain dispensing containers separately from reserve inventory.
--   Make dispenser capacity optional.
--   View complete inventory movement history.
-
-## ⚗️ Automatic Consumable Usage
-
--   Configure detergent and fabric conditioner usage per service.
--   Allow Standard Full Service, Heavy/Bulky, Comforter, and other
-    services to use different amounts.
--   Support weight-based consumption rules.
--   Automatically deduct shop supplies when a load starts washing.
--   Override the normal amount for unusual loads.
--   Require a reason for consumable overrides and record it in the audit
-    log.
--   Flag inventory discrepancies without preventing shop operations.
-
-## ⚠️ Inventory Alerts
-
--   Configure optional low-refill alerts for dispensing containers.
--   Configure reorder/low-stock alerts for inventory products.
--   Identify empty or insufficient recorded stock.
--   Allow physical inventory corrections with a recorded reason.
--   Keep adjustments fully traceable through inventory and audit
-    history.
-
-## 🧼 Machine Operations
-
-- Include overdue running machines in the Operations attention badge and update it live.
-
--   Configure washers and dryers individually.
--   Track machine availability and current loads.
--   Display elapsed cycle time and estimated remaining time.
--   Flag cycles running longer than expected.
--   Mark machines as non-operational with a reason.
--   Exclude unavailable machines from load assignment.
--   Show active laundry directly inside the machine cards.
--   Allow staff to work either from the load queue or from an available
-    machine.
-
-
-## 🏭 Actual Machine Configuration
-
-- Default washers are Haier HCW12CS professional washers.
-- Default dryers are Haier HCD12GS gas dryers configured for LPG operation.
-- Manufacturer-rated machine capacity is 12 kg.
-- Laba Nice Day uses a 9 kg operational maximum per physical load to reduce machine stress.
-- A 10 kg Standard Full Service order is therefore split into two physical loads rather than loading 10 kg into one machine.
-- Machine configuration keeps rated capacity separate from the shop operational maximum.
-
-## 🔒 Demo Sharing & Security
-
-- The demo contains no production database credentials or API secrets.
-- Real payment QR codes and real customer records must not be committed to the public demo.
-- Protected actions use the configured Owner/Admin demo accounts rather than separate hard-coded approval PINs.
-- Each release is reviewed for accidental sensitive information before sharing.
-
-## ⏱️ Queues & Shop Workflow
-
--   Maintain separate Wash, Dry, and Folding queues.
--   Show actionable queue counts in Operations.
--   Automatically queue loads when all compatible machines are occupied.
--   Mark a waiting load as Priority without visually moving it to the
-    top of the queue.
--   Show transactions that are ready for customer release.
--   Release all completed loads belonging to a transaction together.
-
-## ➕ Extra Services
-
--   Add Extra Rinse to an active washing load.
--   Add Extra Dry to an active drying load.
--   Extend the existing machine cycle instead of creating another
-    physical load.
--   Add the extra charge to the existing transaction.
--   Allow the additional charge to be paid before customer release.
-
-## 🏢 Bulk & Advanced Orders
-
--   Support Business / Establishment customers.
--   Create bulk orders using total laundry weight.
--   Let the system suggest how the order should be divided into physical
-    loads.
--   Allow staff to adjust the suggested load sizes before confirming.
--   Price the order based on the confirmed physical loads.
--   Track every resulting load separately while keeping them under one
-    customer transaction.
--   Support categories such as towels, sheets, curtains, and other
-    establishment laundry.
-
-## 🚚 Pickup & Delivery
-
--   Support customer drop-off, shop pickup, customer collection, and
-    delivery workflows.
--   Save delivery/pickup addresses with the transaction.
--   Track pickup and delivery status from Operations.
--   Open Google Maps with driving directions to the customer's address.
--   Support configurable delivery distance zones and charges.
--   Keep pickup and delivery status changes in the audit trail.
-
-## 💳 GCash Workflow
-
--   Support a simulated GCash payment workflow in the demo.
--   Record GCash reference numbers.
--   Capture/upload payment proof.
--   Compress payment images before browser storage.
--   Remind staff to verify that payment was actually received.
--   Do not treat screenshots alone as proof of successful payment.
-
-> The GitHub demo uses a fake payment QR and must not be used for
-> real payments.
-
-## 👥 Customers
-
--   Save customer information for future transactions.
--   Require customer name and contact number.
--   Store address when provided.
--   Support individual and business customers.
--   Allow Owner/Admin customer editing.
--   Record customer information changes in the audit trail.
-
-
-## 👤 Users, Roles & Access
-
-- Sign in with a local user and PIN.
-- Demo Attendant User — PIN `1234`.
-- Demo Admin User — PIN `0987`.
-- Demo Owner User — PIN `5678`.
-- Demo roles include Owner, Admin, and Attendant.
-- Owner can create, edit, activate, and deactivate demo users.
-- Roles use permission bundles to control access to configuration, audit logs, reports, approvals, and normal shop operations.
-- Owner/Admin PIN approval can be used for controlled actions such as discounts and transaction changes.
-- Audit records identify the signed-in user and can record a separate approver.
-- Quickly switch users, lock the shared device, or end the current shift.
-- Track a lightweight local shift start/end for each signed-in user.
-
-> Demo authentication is browser-local and is intended to validate workflow and permissions. It is not production security and is not synchronized between devices.
-
-## 🔐 Controls & Audit Trail
-
--   Maintain a detailed audit history of important actions.
--   Track transaction creation, payments, amendments, cancellations,
-    discounts, machine actions, inventory changes, consumable overrides,
-    and data repairs.
--   Require Owner/Admin approval or passcode for controlled actions.
--   Keep historical actions instead of silently overwriting or deleting
-    records.
--   Export audit history to CSV.
-
-## 🛠️ Data Integrity & Recovery
-
-- Automatically reconcile load status with Wash, Dry, and Folding queues.
-- Repair missing queue entries when a waiting load is found outside its expected queue.
-- Continue a load directly from Transactions when it needs the next machine or folding step.
-- Automatically send a completed wash load to the Dry Queue when no dryer is available.
-- Show a non-blocking toast instead of an assignment popup when there is no compatible machine to choose.
-- Allow Owner/Admin to correct physical load progress with **Repair / Set Load Progress**.
-- Require an Owner/Admin passcode and reason for manual progress corrections.
-- Record manual corrections and automatic repairs in the audit log.
-- Detect conflicting machine assignments and flag them for Owner attention instead of silently guessing.
-- Provide **Check & Repair Data** for manual integrity checks.
-- Validate and reconcile data after restoring older backups.
-
-## 📊 Owner Dashboard & Reports
-
--   View sales and payment summaries.
--   Monitor machine status.
--   Review current shop operations.
--   Track active and completed loads.
--   Export sales summaries to CSV.
--   Export detailed transaction/load data to CSV.
--   Export audit logs to CSV.
-
-## 💾 Browser Storage & Backups
-
-The current demo is browser-based.
-
--   Data is stored locally on each tester's device.
--   Data is **not synchronized between devices**.
--   Different testers have independent demo data.
--   Application data can be exported and restored using backups.
--   Restored data is validated and reconciled before normal operations
-    continue.
--   The browser prototype is intended for workflow testing and
-    validation, not as the final production database.
-
-
-### Demo Reset & Fresh Installation
-
-- Fresh installations automatically validate that core services, customers, machines and inventory exist.
-- **Reset Demo Data** now creates a canonical fresh demo state directly instead of passing through legacy recovery logic.
-- If the service catalog is incomplete, the demo restores the default service catalog before rendering New Order.
-- **Repair Installation** also checks that actual load-producing services exist, not merely that a catalog array is present.
-
-## 🌐 Demo
-
-The current demo is available through GitHub Pages:
-
-https://rbcepres.github.io/laba-nice-day-demo/
-
-The demo can be tested from Android, iPhone, Windows, and macOS using a
-modern browser.
-
-### Demo Limitations
-
--   No centralized database yet.
--   No real multi-device synchronization.
--   No production authentication system yet.
--   GCash integration is simulated.
--   Machine activity is currently entered manually.
--   ESP32-based physical machine monitoring is planned for a later
-    stage.
--   The demo should not contain real customer or payment
-    information.
-
-## 🚧 Planned Production Architecture
-
-The prototype is being used to validate the shop workflow before
-building the production application.
-
-Planned stack:
-
--   React + TypeScript frontend
--   FastAPI backend
--   PostgreSQL database
--   SQLAlchemy data layer
--   Local-first shop server
--   Centralized multi-device data
--   User accounts and role-based permissions
--   ESP32 machine monitoring
--   MQTT machine telemetry
--   Automated backups and reporting
-
-## 🎯 Project Goal
-
-The goal is not simply to create a generic POS.
-
-The system is being designed specifically around laundry operations:
-
-**Customer → Transaction → Physical Loads → Machines & Queues → Folding
-→ Payment → Release**
-
-The long-term goal is to connect the software workflow with actual
-machine activity, inventory consumption, payments, and shop operations
-while keeping the attendant workflow simple and fast.
-
-------------------------------------------------------------------------
-
-**Developed by:** Ronald Cepres\
-**Email:** rbcepres@gmail.com
-
-
-## 👤 Access hierarchy and customer data
-
-- **System Administrator** has full technical and business access, including backup restore and system-level user management.
-- **Owner** has broad business-control permissions without dangerous system-administration functions.
-- **Manager** is available for delegated shop management but is not created by default in the demo.
-- **Attendant** focuses on daily operations. Address changes can be saved directly; customer name/contact changes require Manager, Owner or Sys Admin approval.
-- Historical transactions keep a customer identity snapshot so later customer-profile edits do not rewrite what was recorded at transaction time.
-- Upgrade logic keeps a pre-migration safety copy and checks other Laba Nice Day browser-storage records before accepting an unexpectedly empty state.
-
-### Default demo accounts
+## Demo accounts
 
 - Demo Sys Admin User — PIN `0987`
 - Demo Owner User — PIN `5678`
 - Demo Attendant User — PIN `1234`
 
-## Demo reset and installation repair
+Manager is an available role but is not seeded by default.
 
-- **Reset Demo Data** now creates a deterministic fresh demo installation and deliberately bypasses legacy recovery data.
-- A fresh reset restores the default customers, services, machines, realistic demo inventory, and demo user accounts while leaving transactions and queues empty.
-- **Repair Installation** can restore required seed data if an incomplete browser state is detected.
-- Normal upgrades still preserve and migrate existing browser data; intentional reset is handled separately so recovery logic cannot re-load a broken empty state.
+## Browser data
 
-### v16.4.4 initialization reliability
+The Demo stores data locally in the browser. Data is not synchronized between devices or testers. Export a backup before installing a new Demo version if the current test data matters.
 
-- Fresh installs and Reset Demo Data use one canonical demo-state initializer.
-- Repair Installation validates the actual service, machine, customer, inventory and user collections used by the UI.
-- Repair Installation reports the components it restored instead of silently completing.
-- Default machine seed contains W1-W3 and D1-D3 with the configured Haier specifications and 9kg shop operating limit.
+`Reset Demo Data` creates one deterministic default state. `Check & Repair Data` is intended for operational inconsistencies such as queue membership and machine assignments, not for silently recreating missing core collections.
 
-### v16.4.4 installation reliability
+## Printing
 
-- Fresh installation and Reset Demo Data now use one canonical demo-state initializer.
-- Repair Installation validates the actual collections used by the UI and reports what it restored.
-- The machine seed always restores W1-W3 and D1-D3 with the configured Haier models and 9kg shop operating limit.
+Printing uses an in-app preview followed by the browser print flow. Receipt and load-label output supports 58mm and 80mm paper widths. Automatic printing is off by default. The printing foundation is intentionally transport-independent so production can later support browser, ESC/POS, USB, LAN, or server print transports.
 
-## Demo v16.4.6 stabilization
+## Demo limitations
 
-- Inventory products now use one canonical product catalog shared by New Order and Inventory.
-- Inventory repair/reset state is persisted and validated so it survives refresh.
-- Fresh/reset demo data includes realistic detergent, fabric conditioner, dispensing-container, and laundry-bag stock.
-- Empty screens show explicit messages such as “No released transactions” or “No machines configured” instead of appearing blank.
+- No centralized database or multi-device synchronization.
+- Browser-local authentication is not production-grade security.
+- GCash is simulated; the shared Demo must never contain real payment QR/details.
+- Machine activity is entered manually.
+- ESP32/MQTT monitoring and production deployment are future work.
 
-## Demo v16.4.6 stabilization
+## Planned production architecture
 
-- Inventory products use one canonical product catalog shared by New Order and Inventory.
-- Inventory created by reset or Repair Installation is persisted and checked so it survives refresh.
-- Fresh/reset demo data includes realistic detergent, fabric conditioner, dispensing-container, and laundry-bag stock.
-- Empty screens show explicit messages such as “No released transactions” and “No machines configured” instead of appearing blank.
+- React + TypeScript frontend
+- FastAPI + Python backend
+- SQLAlchemy
+- PostgreSQL
+- LAN-first shop server
+- Backend-enforced permissions and append-oriented audit logging
+- ESP32 + MQTT machine telemetry
 
+The production system will treat load workflow state as authoritative. Individual machine tracking is planned as an optional operational capability rather than a prerequisite for load progression.
 
-### Inventory rendering and Android release folders
+## Demo
 
-- Inventory, New Order supply selectors, and Configuration use the same inventory product catalog.
-- The Inventory screen renders the canonical Stock, Containers, and Movements panels rather than the retired legacy inventory list.
-- Android release ZIPs include a `.nomedia` marker so extracted launcher icons are not normally indexed by Gallery.
+GitHub Pages is the canonical Demo deployment:
 
-## Demo State & Upgrades
+https://rbcepres.github.io/laba-nice-day-demo/
 
-The browser demo intentionally uses a simpler, deterministic state model.
+## Developer
 
-- Current demo data is stored under one browser storage record.
-- Normal startup loads that record directly instead of searching historical storage copies.
-- Reset Demo Data creates one complete known-good demo state.
-- Check & Repair Data is limited to operational consistency such as queue membership and machine assignments.
-- Core collections such as Services, Customers, Machines, Users and Inventory are not silently reconstructed during normal startup.
-- Export a backup before installing a new demo version if the current test data matters.
-
-This simplified approach keeps the prototype predictable. The production PostgreSQL application will use explicit database migrations and stronger transactional integrity.
-
-## Demo v16.5.2 regression recovery
-
-- Restored browser-based receipt printing and physical load-label printing from active transactions.
-- Restored Print Load Label and Print All Load Labels actions with human-friendly `#transaction-letter` labels.
-- Restored 58mm / 80mm print-width settings; automatic printing remains off by default.
-- Confirmed Users & Access, user creation/editing/activation, role permissions, user switching, device lock, and shift controls remain present and permission-gated to the appropriate roles.
-- Improved machine-card hierarchy so machine ID and the 9kg shop operating maximum cannot visually merge.
-- Preserved the simplified browser-state architecture and v16.5.1 Inventory authentication/render timing fix.
-
-## Demo v16.5.3 workflow stabilization
-
-- Fixes System Administrator user editing and refreshes role/permission UI after changes.
-- Machine Assignment is load-driven and can present eligible washer and dryer loads together.
-- Auto-fill spans mixed machine types, preserves manual choices, remains reviewable, and yields primary emphasis to Confirm once no more assignments are available.
-- Machine Assignment shows machine IDs without capacity text.
-- Available Operations machine cards make the waiting-load assignment action more prominent.
-- Clarifies transaction classification as Customer Type, Order Mode, Received Via, and Return Via.
-- Wash-service supply selection is derived from configurable service workflow/consumption settings and supports apply-to-all plus per-load overrides for multiple same-service loads.
+Ronald Cepres  
+rbcepres@gmail.com
