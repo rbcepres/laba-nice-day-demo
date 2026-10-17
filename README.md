@@ -39,8 +39,8 @@ The demo stores its data in the browser. Use sample information only; do not ent
 
 ### Receipt and load-label printing
 - Preview receipts and load labels before printing.
-- Print directly to a supported Bluetooth ESC/POS thermal printer where Web Bluetooth is available.
-- Use browser/system printing as a fallback.
+- On a configured Android shop tablet, print through the local LND Printer Bridge without a Chrome Bluetooth chooser.
+- Direct Web Bluetooth ESC/POS and browser/system printing remain available as fallbacks.
 - Configure receipt shop information and default receipt-copy count.
 - Adjust receipt copies from the print preview.
 - Reprint receipts with clear reprint identification and audit recording.
@@ -75,7 +75,7 @@ No Manager account is seeded by default, but an authorized user can create one i
 
 ## Demo Notes
 
-This is a functional browser prototype, not the final production deployment. Data, authentication, permissions, and uploaded proof images are stored locally in the browser and are intended for workflow demonstration rather than production security. Hardware-dependent capabilities such as Bluetooth printing depend on browser, device, and printer compatibility.
+This is a functional browser prototype, not the final production deployment. Data, authentication, permissions, and uploaded proof images are stored locally in the browser and are intended for workflow demonstration rather than production security. Hardware-dependent printing depends on the configured printer transport, device, and printer compatibility.
 
 ## Developer
 
